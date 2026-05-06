@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户注册</title>
+    <!-- 先简单美化，用基础CSS -->
+    <style>
+        .container {
+            width: 400px;
+            margin: 100px auto;
+            padding: 20px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .form-item {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .error {
+            color: red;
+            font-size: 12px;
+            margin-top: 3px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #4285f4;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>用户注册</h2>
+    <!-- 注册表单，提交到/register接口 -->
+    <form action="/register" method="post">
+        <div class="form-item">
+            <label>用户名：</label>
+            <input type="text" name="username" th:value="${username}" required>
+            <!-- 错误提示：后端返回的错误信息 -->
+            <div class="error" th:text="${usernameError}" th:if="${usernameError != null}"></div>
+        </div>
+        <div class="form-item">
+            <label>密码：</label>
+            <input type="password" name="password" required>
+            <div class="error" th:text="${passwordError}" th:if="${passwordError != null}"></div>
+        </div>
+        <div class="form-item">
+            <label>确认密码：</label>
+            <input type="password" name="confirmPassword" required>
+            <div class="error" th:text="${confirmError}" th:if="${confirmError != null}"></div>
+        </div>
+        <button type="submit">注册</button>
+    </form>
+    <p style="text-align: center; margin-top:15px;">已有账号？<a href=" ">去登录</a ></p >
+</div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}">登录</title>
+    <style>
+        .container {
+            width: 400px;
+            margin: 100px auto;
+            padding: 20px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .form-item {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .error {
+            color: red;
+            font-size: 12px;
+            margin-top: 3px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #4285f4;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 th:text="${title}">用户登录</h1>
+    <!-- 错误提示 -->
+    <div class="error" th:text="${errorMsg}" th:if="${errorMsg != null}" style="text-align:center; margin-bottom:15px;"></div>
+    <form action="/login" method="post">
+        <div class="form-item">
+            <label>用户名：</label>
+            <input type="text" name="username" required>
+        </div>
+        <div class="form-item">
+            <label>密码：</label>
+            <input type="password" name="password" required>
+        </div>
+        <button type="submit">登录</button>
+    </form>
+    <p style="text-align: center; margin-top:15px;">没有账号？<a href=" ">去注册</a ></p >
+</div>
+</body>
+</html>
